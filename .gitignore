@@ -1,2 +1,8 @@
 venv
 backend_api/media
+backend_api/__pycache__
+backend_api/account/__pycache__
+backend_api/masters/__pycache__
+backend_api/common/__pycache__
+backend_api/operation/__pycache__
+

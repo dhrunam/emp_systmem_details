@@ -32,14 +32,6 @@ urlpatterns = [
     path('masters/section/<int:pk>', masters_views.SectionDetails.as_view()),
     path('masters/section/list', masters_views.SectionListWithoutPagination.as_view()),
 
-    path('masters/medical_test_profile', masters_views.MedicalTestProfileList.as_view()),
-    path('masters/medical_test_profile/<int:pk>', masters_views.MedicalTestProfileDetails.as_view()),
-    path('masters/medical_test_profile/list', masters_views.MedicalTestProfileListWithoutPagination.as_view()),
-
-    path('masters/medical_test', masters_views.MedicalTestList.as_view()),
-    path('masters/medical_test/<int:pk>', masters_views.MedicalTestDetails.as_view()),
-    path('masters/medical_test/list', masters_views.MedicalTestListWithoutPagination.as_view()),
-    
     path('masters/employee_type', masters_views.EmployeeTypeList.as_view()),
     path('masters/employee_type/<int:pk>', masters_views.EmployeeTypeDetails.as_view()),
     path('masters/employee_type/list', masters_views.EmployeeTypeListWithoutPagination.as_view()),

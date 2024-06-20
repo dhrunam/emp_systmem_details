@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'durin',
     'account',
     'masters',
-    'configuration',
     'operation',
     'common',
 ]
@@ -110,10 +109,10 @@ DATABASES = {
     # Production
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'health',
+        'NAME': 'emp_system_db',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '10.182.144.236',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }

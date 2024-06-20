@@ -1,85 +1,34 @@
 from rest_framework import serializers
 from operation import models as op_models
-from configuration import serializers as con_serializers
+
 # import magic
 
-
-class EmpHealthTestDetailsSerializer(serializers.ModelSerializer):
+class AllotedDevicesSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model= op_models.EmpHealthTestDetails
-
+        model = op_models.AllotedDevices
         fields = (
             'id',
-            'emp_health_profile_test',
-            'medical_test_profile',
-            'medical_test',
-            'medical_test_result',
-            'normal_min_value',
-            'normal_max_value',
-            'unit',
+            'system_assignment_details',
+            'system_details',
+            'remarks',
+
         )
 
+   
 
-class EmpHealthTestReportsSerializer(serializers.ModelSerializer):
+class SystemAssignmentDetailsSerializer(serializers.ModelSerializer):
+
+    related_devices = AllotedDevicesSerializer(source='system_assigend_to', many= True, read_only=True)
 
     class Meta:
-        model = op_models.EmpHealthTestReports
+        model = op_models.SystemAssignmentDetails
         fields = (
-            'id',
-            'emp_health_profile_test',
-            'report_name',
-            'report_url',
-
-        )
-    
-    # def validate_report_url(self, value):
-    #     file_extension = value.name.split('.')[-1].lower()
-
-    #     # Allowed file extensions
-    #     allowed_extensions = ['pdf']
-
-    #     if file_extension not in allowed_extensions:
-    #         raise serializers.ValidationError("Invalid file type. Only PDF files are allowed.")
-
-       
-    #     mime_type = magic.from_buffer(value.read(), mime=True)
-
-    #     # Allowed MIME types
-    #     allowed_mime_types = ['application/pdf']
-
-    #     if mime_type not in allowed_mime_types:
-    #         raise serializers.ValidationError("Invalid file type. Only PDF files are allowed.")
-
-    #     return value
-
-
-
-
-class EmpHealthProfileTestSerializer(serializers.ModelSerializer):
-    related_emp_health_test_details = EmpHealthTestDetailsSerializer(source='emp_health_test_details', many=True, read_only=True)
-    related_emp_health_tests_reports= EmpHealthTestReportsSerializer(source='emp_health_test_report', many=True, read_only=True)
-    related_medical_test_session = con_serializers.MedicalTestSessionSeriralizer(source='medical_test_session', read_only = True)
-    class Meta:
-        model = op_models.EmpHealthProfileTest
-        fields= (
             'id',
             'employee',
-            'emp_age',
-            'emp_remarks',
-            'medical_test_session',
-            'sample_type',
-            'collection_date',
-            'reg_date',
-            'ref_doctor',
-            'analyst',
-            'location',
-            'emp_remarks',
-            'is_entry_completed',
-            'related_emp_health_test_details',
-            'related_emp_health_tests_reports',
-            'related_medical_test_session',
-
+            'section',
+            'ip_address',
+            'remarks',
+            'related_devices',
         )
-
 

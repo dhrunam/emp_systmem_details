@@ -18,7 +18,6 @@ from django.urls import path, include
 from durin import urls as durin_urls
 from masters import urls as master_urls
 from account import urls as acc_urls
-from configuration import urls as conf_urls
 from operation import urls as op_urls
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,7 +26,6 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     path('api/', include(op_urls)),
-    path('api/', include(conf_urls)),
     path('api/', include(master_urls)),
     path('api/', include(acc_urls)),
     path('api/', include(durin_urls)),
